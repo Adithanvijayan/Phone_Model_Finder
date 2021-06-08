@@ -7,10 +7,26 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
+    <script>
+        function findBattery(){
+            navigator.getBattery().then(function(battery) {
+                var level = battery.level * 100;
+                document.getElementById("batteryLevel").innerHTML = level + "%";
+                var charging = battery.charging;
+                document.getElementById("batteryCharging").innerHTML = charging;
+            });
+        }
+    </script>
     <body>
         <div style="text-align: center;">
-            <h3>To find your phone Model : </h3>
+            <h3>To find your Device Model : </h3>
             <button type="button" class="btn btn-success btn-lg" onclick="alert(navigator.userAgent)">Click Here</button>
+            <h3>To find your Device Battery : </h3>
+            <button type="button" class="btn btn-success btn-lg" onclick="findBattery()">Click Here</button>
+            <p>Battery Level : <span id="batteryLevel"></span></p>
+            <p>Device Charging : <span id="batteryCharging"></span></p>
+            <h3>To find your Device RAM Memory : </h3>
+            <button type="button" class="btn btn-success btn-lg" onclick="alert(navigator.deviceMemory)">Click Here</button>
         </div>
     </body>
 </html>
